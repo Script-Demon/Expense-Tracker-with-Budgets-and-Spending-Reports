@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Expense Tracker — monthly spending, budgets and reporting in one calm control room." />
+    <title>Expense Tracker · October 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true"><span></span><i></i></div>
+          <div>
+            <div class="brand-name">Expense<span>Tracker</span></div>
+            <div class="brand-caption">PERSONAL LEDGER</div>
+          </div>
+        </div>
+
+        <div class="rail-label">WORKSPACE</div>
+        <nav class="primary-nav">
+          <button class="nav-item active" data-nav="overview" data-route="/" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z" /></svg>
+            <span>Overview</span><b>01</b>
+          </button>
+          <button class="nav-item" data-nav="transactions" data-route="/transactions" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h11m-3-3 3 3-3 3M20 17H9m3-3-3 3 3 3" /></svg>
+            <span>Transactions</span><b>24</b>
+          </button>
+          <button class="nav-item" data-nav="budgets" data-route="/budgets" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5m0 14h16M8 16v-4m4 4V8m4 8v-7" /></svg>
+            <span>Budgets</span><b>07</b>
+          </button>
+          <button class="nav-item" data-nav="categories" data-route="/categories" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h6v6H5V5Zm8 0h6v6h-6V5ZM5 13h6v6H5v-6Zm8 0h6v6h-6v-6Z" /></svg>
+            <span>Categories</span><b>07</b>
+          </button>
+          <button class="nav-item" data-nav="reports" data-route="/reports" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6V3Zm9 0v4h4M9 12h6m-6 4h6m-6-8h2" /></svg>
+            <span>Reports</span><b>03</b>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="rail-label">DATA CONNECTION</div>
+          <div class="connection-card">
+            <span class="status-dot"></span>
+            <div><strong>Local workspace</strong><small>Preview data is in sync</small></div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </div>
+          <div class="user-chip">
+            <div class="avatar">AR</div>
+            <div><strong>Alex Rivera</strong><small>Personal account</small></div>
+            <button class="icon-button" aria-label="Open account menu" data-tooltip="Account menu" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9h.01M12 9h.01M18 9h.01" /></svg></button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><i>/</i><strong id="breadcrumbCurrent">Overview</strong></div>
+          <div class="topbar-actions">
+            <button class="icon-button" id="searchFocus" aria-label="Focus search" data-tooltip="Search expenses" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg></button>
+            <button class="icon-button" id="exportReport" aria-label="Export monthly report" data-tooltip="Export report" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m-4-4 4 4 4-4M5 20h14" /></svg></button>
+            <div class="topbar-separator"></div>
+            <div class="current-month"><span class="month-kicker">REPORTING MONTH</span><strong id="currentMonthLabel">October 2026</strong></div>
+            <button class="month-switcher" id="monthSwitcher" aria-label="Change month" data-tooltip="Change month" type="button"><span id="monthSwitcherLabel">OCT</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></button>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="page-section active" id="overviewSection" data-section="overview">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow"><span class="eyebrow-line"></span> MONTHLY CONTROL ROOM</div>
+                <h1><span id="monthHeadline">October</span> spending, <em>in view.</em></h1>
+                <p class="heading-copy">A clear read on what moved this month, what is still available, and where the next decision sits.</p>
+              </div>
+              <div class="heading-actions">
+                <button class="button button-quiet" id="openFilter" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-6 6h2" /></svg> Filter view</button>
+                <button class="button button-primary" id="openAddExpense" type="button"><span class="button-plus">+</span> Add expense</button>
+              </div>
+            </div>
+
+            <div class="stat-row">
+              <article class="stat-card stat-primary">
+                <div class="stat-topline"><span class="stat-label">TOTAL SPENT</span><span class="stat-period" id="statPeriod">OCT 01 — 31</span></div>
+                <div class="stat-value" id="totalSpent">$2,904.70</div>
+                <div class="stat-foot"><span class="trend-badge trend-warn" id="spentTrend">↑ 17.5%</span><span id="spentComparison">vs. September</span></div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-topline"><span class="stat-label">MONTHLY BUDGET</span><span class="stat-icon green">⌁</span></div>
+                <div class="stat-value" id="monthlyBudget">$4,200.00</div>
+                <div class="stat-foot"><span class="neutral-copy" id="budgetFoot">69.2% allocated</span><span>across 7 categories</span></div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-topline"><span class="stat-label">REMAINING</span><span class="stat-icon">◌</span></div>
+                <div class="stat-value green-text" id="remainingBudget">$1,295.30</div>
+                <div class="stat-foot"><span class="trend-badge trend-good">On track</span><span id="dailyPace">$62.40 / day pace</span></div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-topline"><span class="stat-label">SAVINGS RATE</span><span class="stat-icon amber">↗</span></div>
+                <div class="stat-value" id="savingsRate">31.8%</div>
+                <div class="stat-foot"><span class="trend-badge trend-good">↑ 4.2 pts</span><span>vs. last month</span></div>
+              </article>
+            </div>
+
+            <div class="analysis-grid">
+              <article class="panel trend-panel">
+                <div class="panel-header">
+                  <div><div class="panel-kicker">SPENDING VELOCITY</div><h2>Daily outflow</h2></div>
+                  <div class="chart-legend"><span class="legend-line"></span> <span id="chartCurrentLegend">October</span> <span class="legend-line previous"></span> <span id="chartPreviousLegend">September</span></div>
+                </div>
+                <div class="chart-summary"><strong id="chartTotal">$2,904.70</strong><span>cumulative spend</span><span class="chart-delta" id="chartDelta">+17.5% month over month</span></div>
+                <div class="chart-wrap">
+                  <svg id="trendChart" viewBox="0 0 760 252" role="img" aria-label="Cumulative spending trend for October">
+                    <defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#22c55e" stop-opacity=".24" /><stop offset="100%" stop-color="#22c55e" stop-opacity="0" /></linearGradient></defs>
+                    <g class="chart-grid"><line x1="42" y1="24" x2="742" y2="24" /><line x1="42" y1="78" x2="742" y2="78" /><line x1="42" y1="132" x2="742" y2="132" /><line x1="42" y1="186" x2="742" y2="186" /><line x1="42" y1="224" x2="742" y2="224" /></g>
+                    <g class="chart-y-labels"><text id="yLabelTop" x="0" y="29">$4k</text><text id="yLabel75" x="0" y="83">$3k</text><text id="yLabel50" x="0" y="137">$2k</text><text id="yLabel25" x="0" y="191">$1k</text><text id="yLabelZero" x="11" y="229">$0</text></g>
+                    <path id="previousPath" class="chart-path previous-path" d="M42 224 L90 211 L138 199 L186 190 L234 170 L282 164 L330 149 L378 142 L426 122 L474 112 L522 94 L570 81 L618 68 L666 54 L714 48 L742 43" />
+                    <path id="areaPath" class="chart-area" d="" />
+                    <path id="trendPath" class="chart-path" d="" />
+                    <g id="trendDots"></g>
+                    <g class="chart-x-labels"><text id="xLabel1" x="42" y="247">01 OCT</text><text id="xLabel2" x="211" y="247">08 OCT</text><text id="xLabel3" x="379" y="247">15 OCT</text><text id="xLabel4" x="548" y="247">22 OCT</text><text id="xLabel5" x="698" y="247">31 OCT</text></g>
+                  </svg>
+                </div>
+              </article>
+
+              <article class="panel category-panel">
+                <div class="panel-header"><div><div class="panel-kicker">MIX OF SPEND</div><h2>By category</h2></div><button class="text-button" data-nav="categories" type="button">View all <span>→</span></button></div>
+                <div class="donut-wrap"><div class="donut" id="categoryDonut"><div class="donut-hole"><strong id="donutTotal">$2.9k</strong><span>total</span></div></div></div>
+                <div class="category-legend" id="categoryLegend"></div>
+              </article>
+            </div>
+
+            <div class="lower-grid">
+              <article class="panel expenses-panel">
+                <div class="panel-header table-heading"><div><div class="panel-kicker">LEDGER ACTIVITY</div><h2>Recent expenses</h2></div><button class="text-button" data-nav="transactions" type="button">See all <span>→</span></button></div>
+                <div class="table-toolbar"><div class="filter-chips" id="filterChips"><button class="filter-chip active" data-filter="all" type="button">All activity <span id="allCount">17</span></button><button class="filter-chip" data-filter="Food" type="button">Food</button><button class="filter-chip" data-filter="Leisure" type="button">Leisure</button><button class="filter-chip" data-filter="Housing" type="button">Housing</button></div><label class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg><input id="expenseSearch" type="search" placeholder="Search ledger" aria-label="Search expenses" /></label></div>
+                <div class="table-scroll"><table><thead><tr><th>DESCRIPTION</th><th>CATEGORY</th><th>DATE</th><th class="align-right">AMOUNT</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="expenseRows"></tbody></table></div>
+              </article>
+
+              <article class="panel budget-panel">
+                <div class="panel-header"><div><div class="panel-kicker">BUDGET CONTROL</div><h2>Where to watch</h2></div><button class="text-button" data-nav="budgets" type="button">Manage <span>→</span></button></div>
+                <div class="budget-list" id="budgetList"></div>
+                <div class="budget-callout"><span class="callout-pulse"></span><div><strong id="budgetCalloutTitle">Leisure is your fastest mover</strong><small id="budgetCalloutCopy">78% of its monthly limit is already allocated.</small></div><span class="callout-arrow">↗</span></div>
+              </article>
+            </div>
+
+            <div class="dashboard-footer"><span><span class="footer-pulse"></span> Last synced just now</span><span>Data is stored locally in this Preview</span></div>
+          </section>
+
+          <section class="page-section" id="transactionsSection" data-section="transactions">
+            <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> LEDGER ACTIVITY</div><h1>Every line has a <em>reason.</em></h1><p class="heading-copy">Search, filter, edit, and remove transactions without losing the monthly context.</p></div><div class="heading-actions"><button class="button button-primary" data-open-expense type="button"><span class="button-plus">+</span> Add expense</button></div></div>
+            <article class="panel full-panel"><div class="table-toolbar"><div class="filter-chips" id="transactionFilterChips"></div><label class="search-field wide-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg><input id="transactionSearch" type="search" placeholder="Search description or category" aria-label="Search transactions" /></label></div><div class="table-scroll"><table><thead><tr><th>DESCRIPTION</th><th>CATEGORY</th><th>DATE</th><th class="align-right">AMOUNT</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="transactionRows"></tbody></table></div></article>
+          </section>
+
+          <section class="page-section" id="budgetsSection" data-section="budgets">
+            <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> BUDGET CONTROL</div><h1>Give each category a <em>ceiling.</em></h1><p class="heading-copy">Monthly limits turn raw spend into a decision before the month gets away from you.</p></div><div class="heading-actions"><button class="button button-quiet" id="resetBudgets" type="button">Reset demo limits</button></div></div><div class="budget-overview" id="budgetOverview"></div>
+          </section>
+
+          <section class="page-section" id="categoriesSection" data-section="categories">
+            <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> CLASSIFICATION</div><h1>Make the pattern <em>visible.</em></h1><p class="heading-copy">Categories are the vocabulary behind every monthly report.</p></div><div class="heading-actions"><button class="button button-primary" id="addCategory" type="button"><span class="button-plus">+</span> New category</button></div></div><div class="category-grid" id="categoryGrid"></div>
+          </section>
+
+          <section class="page-section" id="reportsSection" data-section="reports">
+            <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> MONTHLY REPORT</div><h1><span id="reportMonthHeadline">October</span>, <em>reported.</em></h1><p class="heading-copy">A review-ready summary of outflow, budget performance, and the change from the prior month.</p></div><div class="heading-actions"><button class="button button-primary" id="reportExport" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m-4-4 4 4 4-4M5 20h14" /></svg> Export CSV</button></div></div><div class="report-grid" id="reportGrid"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="expenseModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header"><div><div class="panel-kicker">LEDGER ENTRY</div><h2 id="modalTitle">Add an expense</h2></div><button class="icon-button" id="closeModal" aria-label="Close expense form" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></div>
+        <form id="expenseForm" novalidate><input type="hidden" id="expenseId" /><div class="form-grid"><label class="field field-wide"><span>Description</span><input id="expenseDescription" name="description" type="text" maxlength="120" placeholder="e.g. Weekly groceries" required /><small class="field-error" id="descriptionError"></small></label><label class="field"><span>Amount</span><div class="input-prefix"><b>$</b><input id="expenseAmount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required /></div><small class="field-error" id="amountError"></small></label><label class="field"><span>Date</span><input id="expenseDate" name="date" type="date" value="2026-10-24" required /><small class="field-error" id="dateError"></small></label><label class="field"><span>Category</span><select id="expenseCategory" name="category" required></select><small class="field-error" id="categoryError"></small></label><label class="field field-wide"><span>Note <em>optional</em></span><input id="expenseNote" name="note" type="text" maxlength="120" placeholder="Add a little context" /></label></div><div class="form-footer"><span class="form-hint"><span class="status-dot"></span> Validated before saving</span><div><button class="button button-quiet" id="cancelModal" type="button">Cancel</button><button class="button button-primary" type="submit" id="saveExpense">Save expense</button></div></div></form>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon">✓</span><span id="toastMessage">Expense saved.</span></div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

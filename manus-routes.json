@@ -1,0 +1,1 @@
+{"routes":[{"path":"/","title":"Expense Tracker Overview"},{"path":"/transactions","title":"Transactions"},{"path":"/budgets","title":"Budgets"},{"path":"/categories","title":"Categories"},{"path":"/reports","title":"Monthly Reports"}]}
